@@ -1,0 +1,655 @@
+	JSE - Java Standard   Edition	(To develope Destop     Application)
+	JEE - Java Enterprise Edition	(To develope Enterprose Applicaiton)
+	JME - Java Micro Edition	(To Develope Embedded java programs)
+
+			Java Exceptions
+
+	[Application]<--------->[File in the Disk]
+
+
+	processFile(){
+		open file;
+		find size of the file;
+		allocate memory;
+		read data into memory;
+		process data;
+		close file;
+	}
+
+	- Fail to open the file			: -1
+	- Fail to find the size of file		: -2
+	- Fail allocate memeory 		: -3
+	- Fail to read file			: -4
+	- Fail to close file			: -5
+
+	processFile(){
+		errorCode = 0;
+		if(openFile) {
+			if(findFileSize) {
+				if(allocatMemory) {
+					if(readFile) {
+						processData;
+						if(closeFile){
+							errorCode = 0;
+						} else {
+							errorCode = -5
+						}
+					} else {
+						errorCode = -4
+					}
+				} else {
+					errorCode = -3
+				}
+			} else {
+				errorCode = -2;
+			}
+		} else {
+			errorCode = -1;
+		}
+	}
+		JVM
+		- Detecting Problem
+		- Reporting Problem
+		Application
+		- Handling Problem
+
+
+	try {
+		open file;
+		find size of the file;
+		allocate memory;
+		read data into memory;
+		process data;
+		close file;
+	} catch(fileOpenFail){
+		//
+	} catch(findFileSizeFail){
+		//
+	} catch(memoryAloocationFail){
+		//
+	} catch(readFileFail){
+		//
+	} catch(closeFileFail){
+		//
+	}
+
+	//
+	//
+	//
+
+Java Exceptions are of 2 Types
+ - Checked   Exception  (Normally, not errors)
+ - Unchecked Exception  (Errors)
+
+
+
+			  [Object]
+			     ^
+			     |
+			[Throwable]
+			     ^
+		   |---------|-----------|
+		[Error]            [Exception]
+				         ^
+				   |-----|----------|
+				Checked		Unchecked(All sub type of RuntimeException)
+				[][][][]	[RuntimeException]
+
+
+Unchecked Exception
+- NullpointerException
+- ArrayIndexoutofboundException
+- ArithmaticException
+- ClassCastException
+
+Checked Exception
+- FilenotFoundException
+- IOException
+- IterruptedExceptoin
+
+
+	Exception
+	Built in(Pre Defined) Exceptions(Detecting and Reporting)
+	- Hardware 		Level
+	- Operating System 	Level
+	- Java Language 	Level
+	
+	
+	User Defined Exceptions
+	- Application 		Level
+
+
+
+	Bank Application
+	- deposit(1000)
+	- withdraw(1000)
+
+****************************************************************************************************************************
+
+		Java Input/Output
+		java.io
+
+		Input  for read()  operation
+		Output for write() operation
+
+		System.out.println("");
+
+
+		Input
+		[Java Application]<-----read-------[Source]
+		Input Stream : If data flow direction is form SOURCE to JavaApplication 
+		read operation
+		
+
+		Output
+		[Java Application]------write----->[Destination/Sink]
+		Output Stream : If data flow direction is form JavaApplication to DESTINATION/SINK 
+		write operation
+
+		Source(Read)		Destination(Write)
+		- File			- File
+		- Byte Array		- Byte Array
+		- Thread		- Thread
+		- SocketConnection	- SocketConnection
+
+		Type of Input/Output Streams
+		- Byte      Stream
+		- Character Stream
+
+		Byte Stream      : Input/Output will be processed(read/write) as Byte data
+		Character Stream : Input/Output will be processed(read/write) as Text Data 
+
+		Byte Stream example : 
+		Any data like 
+		- Image data
+		- Video data
+		- Audio data
+		- Application specific data
+		- Text data	
+
+		Character Stream example :
+		Only Text data
+
+
+		java.io.File 
+
+		java.lang.System
+
+			java.io
+---------------------------------------------------------------------------------------------------
+			Byte Stream Classes
+--------------------------------+-------------------------------------------------------------------
+	Input read()		|		Output write()
+--------------------------------+-------------------------------------------------------------------
+	InputStream		|		OutputStream---------> Abstract class	
+	FileInputSream		|		FileOutputStream-----> For File
+	ByteArrayInputStream	|		ByteArrayOutStream---> For ByteArray
+	BufferedInputStream	|		BufferedOutputStream-> For using Buffers
+	DataInputStream		|		DataOutputStream-----> For primitive data
+	ObjectInputStream	|		ObjectOutputStream---> For Object data
+--------------------------------+-------------------------------------------------------------------
+	read()			|		write()
+	read(byte[])		|		write(byte[])
+read(byte[], offSet, length)    |		write(byte[], offSet, length)
+	close()			|		close()
+	skip()			|		flush()
+	available()		|		
+	markSupported()		|
+	mark()			|
+	reset()			|
+--------------------------------+-------------------------------------------------------------------
+
+
+		Serialization-Deserialization
+
+	Serialization   : Converting a Object in to a sequence of bytes
+	Deserialization : Constructing a Object to its original form from its sequence bytes
+
+
+
+	+-------------------+
+	|empId   : 9179     |		Serialization
+	|empName : SUGNANA  | Breaking into a sequence of bytes
+	|dept    : TRAINING |====================================>[1][2][3][][][].......[][n]
+	|desg    : TRAINER  |
+	+-------------------+
+
+	+-------------------+
+	|empId   : 9179     |		DeSerialization
+	|empName : SUGNANA  | Constructing a Object to its original form from its sequence bytes
+	|dept    : TRAINING |<===================================<[1][2][3][][][].......[][n]
+	|desg    : TRAINER  |
+	+-------------------+
+
+
+	ObjectOutputStream for Serialization of Object
+	writeObject()
+
+	ObjectInputStream  for Deserialization of Object
+	readObject()
+
+
+---------------------------------------------------------------------------------------------------
+			Character Stream Classes
+--------------------------------+-------------------------------------------------------------------
+	Input read()		|		Output write()
+--------------------------------+-------------------------------------------------------------------
+	Reader			|		Writer----------------> AbstractClass
+	InputStreamReader	|		OutputStreamWriter----> For using ByteStream object 
+				|					as Character Stream object
+	FileReader		|		FileWriter------------> For File
+	CharArrayReader		|		CharArrayWriter-------> For Character Array
+	BufferedReader		|		BufferedWriter--------> For Buffers in Char Stream
+--------------------------------+-------------------------------------------------------------------
+	BufferedRader		|		BufferedWriter
+	- readLine()		|		- write(String)
+				|		- newLine()
+--------------------------------+-------------------------------------------------------------------
+
+		Map
+		HashTable
+		Properties
+		key=value
+
+
+
+			Funtional Interface
+
+		@FunctionalInterface
+		interface MyInterface{
+			void testMethod();
+		}
+
+
+		java.util.streams
+		Stream
+		- filter()	Pridicate
+		- map()		Function
+		- forEach()	Consumer
+		- reduce()	BinaryOperator, BinaryFunction
+		- collect()	
+		- count()
+		- distinct()
+		- limit()
+		- anyMatch()
+		- allMatch()
+		- nonMatch()
+		- sorted()
+
+		Intermediate Function		Terminal Functions
+		- filter			- collect()
+		- map()				- forEach()
+		- reduce()			- count()
+		- sorted()			- limit()
+						- anyMatch()
+						- allMatch()
+						- noneMatch()
+
+
+Collection->[Stream Intermediate Operation]->[Stream Intermediate Operation]......[Stream Terminal Operation]
+
+
+	class Employee{}
+	class Manager extends Employee{}
+	class Developer extends Employee{}
+	<? super T>
+
+
+
+
+
+****************************************************************************************************************************
+					Java Threads
+
+	Thread : A sequence of Execution
+
+	.....
+	.....
+	.....
+	.....
+
+	Process : A program in execution
+		 - Program Counter (PC)
+		 - Process Table entry
+		 - IO Table entry
+		 - Thread is also a part of process
+
+
+	Multi Threaded Application
+	- Application with multiple threads in a Application running simultanesy
+	- Divide tasks into multiple threads and execute all tasks parallely
+	- Application will be more efficent
+
+	Example
+	- Browser
+	- Microsoft Team
+	- Word
+	- win search.......
+
+
+	
+
+	java.lang.Thread(c)
+	java.lang.Runnable(i)
+
+	JVM needs one object which can be used as Thread
+	Object is a Runnable object
+
+
+	Thread class is also a Runnable type
+
+	Thread
+	- run()
+	- start()
+	- setName()
+	- getName()
+	- sleep()
+	- isAlive()
+	- join()
+	- currentThread()
+	- getPriority()
+	- setPriority()
+	- isDemon()
+	- setDemon()
+	- yield()
+	- getState()
+	- getId()
+
+	
+	Thread State
+	[New Thread]
+	[Runnable]
+	[Running]
+	[sleep]
+	[waiting]
+	[stop]
+
+
+		new Thread();
+
+
+                                                     +----------------notify()-------+
+						     +--------timeout-------+        |
+						     V                      |        |
+		[NEW]---start()--->[Runnable]--->[running]---sleep()---->[Sleep]     |
+						     |-------wait()----->[Blocked]----+
+						     |
+						     |
+						     v
+						   [Dead]
+
+
+	
+	
+	Disadvantage of Threads
+	- Race condition
+	
+
+
+
+
+
+				JDBC
+			Java Data Base Connctivity
+
+			java.sql.*
+			javaX.sql.*
+
+			- (Connection)
+			- (Statement)
+			- (ResultSet)
+			- (PreparedStatement)
+			- (CallableStatement)
+			- [DirverManager]
+
+
+
+
+		JDBC Application
+		STEP-1 : Include Driver jar in project class path
+		STEP-2 : Load Driver
+		STEP-3 : Get JDBC connection by giving connection details like
+			 - URL
+			 - user name
+			 - password
+		STEP-4 : Get Statement object
+		STEP-5 : Execute SQL statement using Statement object
+		STEP-6 : Get Result in ResultSet object and fetch all the records form ResultSet
+
+
+
+		SQL Statements Types
+		- Data Query Language(DQL)
+		  SELECT
+		- Data Manupilation Language(DML)
+		  INSERT, UPDATE, DELETE
+		- Data Defination Language(DDL)
+		  CREATE, ALTER, DROP
+		- Data Control Language(DCL)
+		  GRANT, REVOKE
+		- Transaction Control Language(TCL)
+		  COMMIT, ROLLBACK, SAVEPOINT
+
+
+
+		DQL 		- executeQuery()
+		DML, DDL	- execute()
+
+		DML
+		INSERT, UPDATE, DELETE
+
+		INSERT INTO <tableName>(colName1, colName2.......)
+			    VALUES(colValue1, colVal2)
+
+		INSERT INTO emp(empno, ename, job, mgr, hiredate, sal, comm, deptno)
+			    VALUES(9179, 'SUGNANA', 'TRAINER', 7902, '2002-7-1', 10000, 10000, 10);
+
+
+		UPDATE <tableName> SET
+		colName1=colValue1,
+		colName1=colValue1,
+		..
+		..
+		colName1=colValue1
+		WHERE <condition>
+		
+
+
+		UPDATE emp SET
+		job='MANAGER'
+		WHERE empno=9179
+
+		DELETE FROM emp WHERE empno=1111
+
+
+		
+
+
+
+	INSERT INTO emp(empno, ename, job, mgr, hiredate, sal, comm, deptno)
+	VALUES(9179, 'SUGNANA', 'TRAINER', 7902, '2002-7-1', 10000, 10000, 10);
+
+
+	100000 Insert
+
+	1 - Insert Record
+
+	For erery Query execution, Steps are
+	Step-1 : Parse(Read) the Query 
+	Step-2 : Compile Query
+	Step-3 : Execute on the DB Server
+
+	Step-1 050ms
+	Step-2 100ms
+	Step-3 150ms
+	Totla  300ms
+
+	100000Inserts * 300ms => 30000000ms => 30000 => 500min => 8:20
+
+
+	100000Inserts * 150ms => 15000000ms => 15000 => 250min => 4:10
+
+
+
+
+	(CallableStatement)
+	PL/SQL
+
+	CREATE OR REPLACE PROCEDURE myPrc() AS
+	BEGIN
+
+	END
+
+
+	ResultSet
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
