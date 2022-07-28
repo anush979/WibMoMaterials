@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+<hibernate-mapping>
+<class name="d01ref.entity.xml.Employee" table="emp">
+	<id name="empId" column="empid" type="integer">		
+		<generator class="assigned"></generator>
+	</id>
+	
+	<property name="empName" column="ename" type="string"></property>
+	<property name="desg"    column="desg"  type="string"></property>
+	<property name="dept"    column="dept"  type="string"></property>
+	
+</class>
+</hibernate-mapping>
