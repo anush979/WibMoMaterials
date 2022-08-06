@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:context="http://www.springframework.org/schema/context"
+ 
+  xmlns:c="http://www.springframework.org/schema/c"
+  xmlns:p="http://www.springframework.org/schema/p"
+  
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+  
+	<bean id="bean01" class="simple.Bean01"/>
+	<bean id="beanA" class="simple.BeanA"/>
+	
+	<bean id="beanInject01" class="simple.BeanInjection02">
+		<constructor-arg ref="bean01" index="0"/>
+		<constructor-arg ref="beanA" index="1"/>
+	</bean>
+
+	<bean id="beanInject02" class="simple.BeanInjection03">
+		<property name="bean01Val" ref="bean01"/>
+		<property name="beanAVal"  ref="beanA"/>
+	</bean>
+
+	<bean id="beanB" class="simple.BeanB">
+		<property name="name" value="SUGNANA"/>
+		<property name="id"   value="9179"/>
+		<property name="sal"  value="12345.6789"/>
+	</bean>
+	
+	<bean id="beanInject03" class="simple.BeanInjection04">
+		<constructor-arg value="TestData01" index="1"/>
+		<constructor-arg value="TestData02" index="0"/>
+	</bean>
+	<bean id="beanInject04" class="simple.BeanInjection05" c:bean01Value-ref="bean01" p:beanAvalue-ref="beanA" p:beanBvalue-ref="beanB"/>
+	
+	<context:property-placeholder location="db.properties"/>
+	<bean id="beanInject05" class="simple.BeanInjection06Property">
+		<property name="driverClassName" value="${driver}"/>
+		<property name="url"             value="${url}"/>
+		<property name="user"            value="${user}"/>
+		<property name="password"        value="${password}"/>
+	</bean>
+	
+
+</beans>
+

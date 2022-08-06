@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+		
+		<bean id="beanH" class="beans.demo.BeanClassHScalerValues">
+			<constructor-arg name="str1" value="StringValueFromConstructorInjection"/>
+			<constructor-arg name="intVal1" value="10"/>
+			<constructor-arg name="doubleVal1" value="11.11"/>
+			<constructor-arg name="boolVal1" value="true"/>
+			<constructor-arg name="charVal1" value="A"/>
+			<property name="str2" value="StringValueFromSetterInjection2"></property>
+			<property name="str3">
+				<value>StringValueFromSetterInjection3</value>
+			</property>
+			<property name="intVal2" value="100"></property>
+			<property name="doubleVal2" value="111.111"></property>
+		</bean>
+</beans>
