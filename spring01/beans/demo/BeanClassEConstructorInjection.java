@@ -3,7 +3,7 @@ package beans.demo;
 import beans.simple.*;
 
 public class BeanClassEConstructorInjection {
-	BeanClassA beanAvar;
+	private BeanClassA beanAvar;
 
 	public BeanClassEConstructorInjection(BeanClassA beanAvar) {
 		super();

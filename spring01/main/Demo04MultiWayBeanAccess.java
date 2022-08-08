@@ -12,6 +12,7 @@ public class Demo04MultiWayBeanAccess {
 		System.out.println("Accessing Bean, Multiple Ways");
 		//BeanClassA beanA = (BeanClassA)context.getBean("beanA");
 		//BeanClassA beanA = context.getBean("beanA", BeanClassA.class);
+		//BeanClassA beanA = context.getBean(BeanClassA.class, "beanA");
 		BeanClassA beanA = context.getBean(BeanClassA.class);
 
 		beanA.display();

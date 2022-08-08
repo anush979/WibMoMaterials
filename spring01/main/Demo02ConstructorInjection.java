@@ -8,7 +8,7 @@ import beans.demo.*;
 
 public class Demo02ConstructorInjection {
 	public static void main(String[] args) {
-		ApplicationContext context = new ClassPathXmlApplicationContext("com/myapp/conf/appconf02ConstructorInjection.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("conf/appconf02ConstructorInjection.xml");
 		BeanClassEConstructorInjection beanE = (BeanClassEConstructorInjection)context.getBean("beanE");
 		beanE.display();
 	}

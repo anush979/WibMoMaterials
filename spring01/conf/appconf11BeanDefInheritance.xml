@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+	<bean id="poolA" class="beans.demo.BeanClassNDataSource">
+		<property name="driverName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://ServerOne/DemoDataBase"/>
+		<property name="user" value="root"/>
+		<property name="password" value="poolaroot"/>
+	</bean>
+
+	<bean id="poolB" class="beans.demo.BeanClassNDataSource">
+		<property name="driverName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://ServerTwo/TestDataBase"/>
+		<property name="user" value="root"/>
+		<property name="password" value="poolbroot"/>
+	</bean>
+
+	<bean id="poolC" class="beans.demo.BeanClassNDataSource">
+		<property name="driverName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://ServerThree/ProductionDataBase"/>
+		<property name="user" value="root"/>
+		<property name="password" value="poolbroot"/>
+	</bean>
+</beans>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<bean id="beanA" class="beans.simple.BeanClassA"></bean>
+	<bean id="beanB" class="beans.simple.BeanClassB"></bean>
+	<bean id="beanC" class="beans.simple.BeanClassC"></bean>
+	<bean id="beanD" class="beans.simple.BeanClassD"></bean>
+
+	<util:set id="mySetBean" set-class="java.util.HashSet">
+		<ref bean="beanA"/>
+		<ref bean="beanB"/>
+		<bean class="beans.simple.BeanClassC"/>
+		<bean class="beans.simple.BeanClassD"/>
+	</util:set>
+	
+	<util:list id="myListBean" list-class="java.util.LinkedList">
+		<ref bean="beanA"/>
+		<ref bean="beanB"/>
+		<bean class="beans.simple.BeanClassC"/>
+		<bean class="beans.simple.BeanClassD"/>
+	</util:list>
+
+	<util:map id="myMapBean1" map-class="java.util.HashMap">
+		<entry key="BeanTypeA" value-ref="beanA"/>
+		<entry key="BeanTypeB" value-ref="beanB"/>
+ 		<entry key="BeanTypeC" value-ref="beanC"/>
+		<entry key="BeanTypeD" value-ref="beanD"/>
+	</util:map>
+
+	<util:map id="myMapBean2" map-class="java.util.HashMap">
+		<entry key-ref="beanA" value="ValueForKeyBeanClassA"/>
+		<entry key-ref="beanB" value="ValueForKeyBeanClassB"/>
+		<entry key-ref="beanC" value="ValueForKeyBeanClassC"/>
+		<entry key-ref="beanD" value="ValueForKeyBeanClassD"/>
+	</util:map>
+	<util:properties id="propBean1">
+		<prop key="driver">com.mysql.jdbc.Driver</prop>
+		<prop key="url">jdbc:mysql://localhost/springdb</prop>
+		<prop key="user">root</prop>
+		<prop key="password">root</prop>
+	</util:properties>
+	<util:properties id="propBean2">
+		<prop key="driver">oracle.jdbc.driver.OracleDriver</prop>
+		<prop key="url">jdbc:oracle:thin:@localhost:1521:xe</prop>
+		<prop key="user">hr</prop>
+		<prop key="password">hr</prop>
+	</util:properties>
+		
+	<bean id="beanQ" class="beans.demo.BeanClassQCollectionDemo">
+		<property name="myList" ref="myListBean"/>
+		<property name="mySet"  ref="mySetBean"/>
+		<property name="myMap1" ref="myMapBean1"/>
+		<property name="myMap2" ref="myMapBean2"/>
+		<property name="prop1"  ref="propBean1"/>
+		<property name="prop2"  ref="propBean2"/>
+	</bean>
+</beans>

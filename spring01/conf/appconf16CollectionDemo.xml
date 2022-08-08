@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="beanA" class="beans.simple.BeanClassA"></bean>
+	<bean id="beanB" class="beans.simple.BeanClassB"></bean>
+	<bean id="beanC" class="beans.simple.BeanClassC"></bean>
+	<bean id="beanD" class="beans.simple.BeanClassD"></bean>
+	
+	<bean id="beanQ" class="beans.demo.BeanClassQCollectionDemo">
+		<property name="myList">
+			<list>
+				<ref bean="beanA"/>
+				<ref bean="beanB"/>
+				<bean class="beans.simple.BeanClassC"/>
+				<bean class="beans.simple.BeanClassD"/>
+			</list>
+		</property>
+		<property name="mySet">
+			<set>
+				<ref bean="beanA"/>
+				<ref bean="beanB"/>
+				<bean class="beans.simple.BeanClassC"/>
+				<bean class="beans.simple.BeanClassD"/>
+			</set>
+		</property>
+		<property name="myMap1">
+			<map>
+				<entry key="BeanTypeA" value-ref="beanA"/>
+				<entry key="BeanTypeB" value-ref="beanB"/>
+ 				<entry key="BeanTypeC" value-ref="beanC"/>
+				<entry key="BeanTypeD" value-ref="beanD"/>
+			</map>
+		</property>
+		<property name="myMap2">
+			<map>
+				<entry key-ref="beanA" value="ValueForKeyBeanClassA"/>
+				<entry key-ref="beanB" value="ValueForKeyBeanClassB"/>
+				<entry key-ref="beanC" value="ValueForKeyBeanClassC"/>
+				<entry key-ref="beanD" value="ValueForKeyBeanClassD"/>
+			</map>
+		</property>
+		<property name="prop1">
+			<value>
+				driver=com.mysql.jdbc.Driver
+				url=jdbc:mysql://localhost/springdb
+				user=root
+				password=root			
+			</value>
+		</property>
+		<property name="prop2">
+			<props>
+				<prop key="driver">oracle.jdbc.driver.OracleDriver</prop>
+				<prop key="url">jdbc:oracle:thin:@localhost:1521:xe</prop>
+				<prop key="user">hr</prop>
+				<prop key="password">hr</prop>
+			</props>	
+		</property>
+	</bean>
+</beans>
