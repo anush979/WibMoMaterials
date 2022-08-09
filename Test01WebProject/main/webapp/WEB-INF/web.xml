@@ -47,4 +47,70 @@
     <servlet-name>CalculatorServlet</servlet-name>
     <url-pattern>/CalculatorServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>FirstSessionServlet</display-name>
+    <servlet-name>FirstSessionServlet</servlet-name>
+    <servlet-class>FirstSessionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FirstSessionServlet</servlet-name>
+    <url-pattern>/FirstSessionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SecondSessionServlet</display-name>
+    <servlet-name>SecondSessionServlet</servlet-name>
+    <servlet-class>SecondSessionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SecondSessionServlet</servlet-name>
+    <url-pattern>/SecondSessionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>InitParamServletDemo01</servlet-name>
+    <servlet-class>InitParamServletDemo01</servlet-class>
+    <init-param>
+      <param-name>driver</param-name>
+      <param-value>com.mysql.cj.jdbc.Driver</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InitParamServletDemo01</servlet-name>
+    <url-pattern>/InitParamServletDemo01</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>InitParamServletDemo02</display-name>
+    <servlet-name>InitParamServletDemo02</servlet-name>
+    <servlet-class>InitParamServletDemo02</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InitParamServletDemo02</servlet-name>
+    <url-pattern>/InitParamServletDemo02</url-pattern>
+  </servlet-mapping>
+  
+  
+  <context-param>
+  	<param-name>url</param-name>
+  	<param-value>jdbc:mysql://localhost:3306/test</param-value>
+  </context-param>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </web-app>
