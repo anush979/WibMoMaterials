@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<context:component-scan base-package="main dao"></context:component-scan>
+	<bean id="mysqlDataSource" 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"	value="com.mysql.cj.jdbc.Driver" />
+		<property name="url"				value="jdbc:mysql://localhost:3306/test" />
+		<property name="username" 			value="root" />
+		<property name="password" 			value="root" />
+	</bean>
+
+	<bean id="hibernateJPAadaptor" 	class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="showSql" 			value="true"></property>
+		<property name="generateDdl" 		value="false"></property>
+		<property name="databasePlatform" 	value="org.hibernate.dialect.MySQL5Dialect"></property>
+												   
+	</bean>
+
+    <bean id="entityMgrFactoryBean" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">  
+        <property name="dataSource" 		ref="mysqlDataSource"></property>  
+        <property name="jpaVendorAdapter" 	ref="hibernateJPAadaptor"></property>  
+     </bean>  
+
+	<!-- Transactions -->
+	<bean id="transactionManager" 	class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityMgrFactoryBean" />
+	</bean>
+	<!-- enable the configuration of transactional behavior based on annotations -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>
