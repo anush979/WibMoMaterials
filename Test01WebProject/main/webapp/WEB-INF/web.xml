@@ -89,28 +89,68 @@
     <servlet-name>InitParamServletDemo02</servlet-name>
     <url-pattern>/InitParamServletDemo02</url-pattern>
   </servlet-mapping>
-  
-  
   <context-param>
-  	<param-name>url</param-name>
-  	<param-value>jdbc:mysql://localhost:3306/test</param-value>
+    <param-name>url</param-name>
+    <param-value>jdbc:mysql://localhost:3306/test</param-value>
   </context-param>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  <servlet>
+    <description></description>
+    <display-name>MainServlet</display-name>
+    <servlet-name>MainServlet</servlet-name>
+    <servlet-class>MainServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MainServlet</servlet-name>
+    <url-pattern>/MainServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HelperServlet1</display-name>
+    <servlet-name>HelperServlet1</servlet-name>
+    <servlet-class>HelperServlet1</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HelperServlet1</servlet-name>
+    <url-pattern>/HelperServlet1</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HelperServlet2</display-name>
+    <servlet-name>HelperServlet2</servlet-name>
+    <servlet-class>HelperServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HelperServlet2</servlet-name>
+    <url-pattern>/HelperServlet2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HelperServlet3</display-name>
+    <servlet-name>HelperServlet3</servlet-name>
+    <servlet-class>HelperServlet3</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HelperServlet3</servlet-name>
+    <url-pattern>/HelperServlet3</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletContextScopeDemo01</display-name>
+    <servlet-name>ServletContextScopeDemo01</servlet-name>
+    <servlet-class>ServletContextScopeDemo01</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletContextScopeDemo01</servlet-name>
+    <url-pattern>/ServletContextScopeDemo01</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginControllerServlet</display-name>
+    <servlet-name>LoginControllerServlet</servlet-name>
+    <servlet-class>LoginControllerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginControllerServlet</servlet-name>
+    <url-pattern>/LoginControllerServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
